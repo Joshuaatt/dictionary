@@ -4,15 +4,19 @@ require("term")
 describe(Term) do
   describe("#word") do
     it("takes in the word for a newly created Term object, and returns the word") do
-      test_term = Term.new("coffee", ["a delicious caffeinated drink"])
-      expect(test_term.word()).to(eq("coffee"))
+      test_word = Word.new("coffee", "english")
+      test_definition = Definition.new("a delicious drink", "english")
+      test_term = Term.new([test_word], [test_definition])
+      expect(test_term.word()).to(eq([test_word]))
     end
   end
 
   describe("#definition") do
     it("takes in a definition for a newly created term object and returns the definition") do
-      test_term = Term.new("coffee", ["a delicious caffeinated drink"])
-      expect(test_term.definition()).to(eq(["a delicious caffeinated drink"]))
+      test_word = Word.new("coffee", "english")
+      test_definition = Definition.new("a delicious drink", "english")
+      test_term = Term.new([test_word], [test_definition])
+      expect(test_term.definition()).to(eq([test_definition]))
     end
   end
 
@@ -24,7 +28,9 @@ describe(Term) do
 
   describe("#save") do
     it("adds a Term to the Term class array of all saved terms") do
-      test_term = Term.new("game", ["a fun entertainment activity"])
+      test_word = Word.new("coffee", "english")
+      test_definition = Definition.new("a delicious drink", "english")
+      test_term = Term.new([test_word], [test_definition])
       test_term.save()
       expect(Term.all()).to(eq([test_term]))
     end
@@ -32,7 +38,9 @@ describe(Term) do
 
   describe(".clear") do
     it("empties out all saved terms from the Term class array") do
-      Term.new("game", ["a fun entertainment activity"])
+      test_word = Word.new("coffee", "english")
+      test_definition = Definition.new("a delicious drink", "english")
+      test_term = Term.new([test_word], [test_definition])
       Term.clear()
       expect(Term.all()).to(eq([]))
     end
@@ -58,9 +66,13 @@ describe(Term) do
 
   describe("#add_definition") do
     it("adds a definition to an existing term") do
-      term = Term.new("coffee", ["a drink"])
-      term.save()
-      expect(term.add_definition("a drug")).to(eq(["a drink", "a drug"]))
+      test_word = Word.new("coffee", "english")
+      test_definition = Definition.new("a delicious drink", "english")
+      test_term = Term.new([test_word], [test_definition])
+      test_term.save()
+      test_definition2 = Definition.new("a drug", "spanish")
+
+      expect(test_term.add_definition(test_definition2)).to(eq([test_definition, test_definition2]))
     end
   end
 
