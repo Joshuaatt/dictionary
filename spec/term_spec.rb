@@ -21,4 +21,12 @@ describe(Term) do
       expect(Term.all()).to(eq([]))
     end
   end
+
+  describe("#save") do
+    it("adds a Term to the Term class array of all saved terms") do
+      test_term = Term.new("game", "a fun entertainment activity")
+      test_term.save()
+      expect(Term.all()).to(eq([test_term]))
+    end
+  end
 end

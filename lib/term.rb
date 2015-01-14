@@ -13,5 +13,8 @@ class Term
     @@all_terms
   end
 
+  define_method(:save) do
+    @@all_terms.push(self)
+  end
 
 end
