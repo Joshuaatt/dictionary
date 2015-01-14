@@ -9,5 +9,9 @@ class Term
     @definition = definition
   end
 
+  define_singleton_method(:all) do
+    @@all_terms
+  end
+
 
 end

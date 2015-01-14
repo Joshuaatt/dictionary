@@ -15,4 +15,10 @@ describe(Term) do
       expect(test_term.definition()).to(eq("a delicious caffeinated drink"))
     end
   end
+
+  describe(".all") do
+    it("is empty at first") do
+      expect(Term.all()).to(eq([]))
+    end
+  end
 end
