@@ -29,4 +29,12 @@ describe(Term) do
       expect(Term.all()).to(eq([test_term]))
     end
   end
+
+  describe(".clear") do
+    it("empties out all saved terms from the Term class array") do
+      Term.new("game", "a fun entertainment activity")
+      Term.clear()
+      expect(Term.all()).to(eq([]))
+    end
+  end
 end

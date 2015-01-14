@@ -13,6 +13,10 @@ class Term
     @@all_terms
   end
 
+  define_singleton_method(:clear) do
+    @@all_terms = []
+  end
+
   define_method(:save) do
     @@all_terms.push(self)
   end
