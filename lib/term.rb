@@ -1,6 +1,6 @@
 class Term
-  
-  attr_accessor :word
+
+  attr_accessor :word, :definition
 
   @@all_terms = []
 
